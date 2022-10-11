@@ -1,3 +1,112 @@
-# GUI-Calculator-Java-
-source code->
-[GUI Calculator in Java.txt](https://github.com/Adwaita25/GUI-Calculator-Java-/files/9754170/GUI.Calculator.in.Java.txt)
+import javax.swing.*;
+import java.awt.event.*;
+public class Experiment
+{
+    public static void GUICalc(){
+        JFrame f = new JFrame("Caclulator");
+        f.setSize(400,400);
+        f.setLayout(null);
+        f.setResizable(false);
+        f.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                System.exit(0);
+            }
+        });
+        
+        JLabel l1, l2, l3;   //l1, l2 for input numbers; l3 for result; l4,l5,l6,l7 for operations
+        
+        JTextField t1, t2, t3;  //t1, t2 for input numbers; ;t3 for showing result
+        
+        JButton b1, b2, b3, b4, b5; //b1-add; b2-subt; b3-mult; b4-div; b5-clear
+
+        l1 = new JLabel("Num 1:"); //num1 config
+        l1.setBounds(50, 50, 100, 30);
+        f.add(l1);
+        
+        l2 = new JLabel("Num 2: "); //num2 config
+        l2.setBounds(50, 100, 100, 30);
+        f.add(l2);
+
+        l3 = new JLabel("Result: "); //result config
+        l3.setBounds(50, 150, 100, 30);
+        f.add(l3);
+
+        t1 = new JTextField(); //textbox for num1
+        t1.setBounds(100, 50, 150, 30);
+        f.add(t1);
+
+        t2 = new JTextField(); //textbox for num2
+        t2.setBounds(100, 100, 150, 30);
+        f.add(t2);
+
+        t3 = new JTextField(); //textbox for displaying result
+        t3.setBounds(100, 150, 150, 30);
+        f.add(t3);
+        
+        b1 = new JButton("ADD"); //button for ADD
+        b1.setBounds(50, 200, 100, 30);
+        f.add(b1);
+        b1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                double num1 = Double.parseDouble(t1.getText());
+                double num2 = Double.parseDouble(t2.getText());
+                double result = num1+num2;
+                t3.setText(String.valueOf(result));
+            }
+        });
+
+        b2 = new JButton("SUBRACT"); //button for SUBTRACT
+        b2.setBounds(170, 200, 100, 30);
+        f.add(b2);
+        b2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                double num1 = Double.parseDouble(t1.getText());
+                double num2 = Double.parseDouble(t2.getText());
+                double result = num1-num2;
+                t3.setText(String.valueOf(result));
+            }
+        });
+
+        b3 = new JButton("MULTIPLY"); //button for MULITPLY
+        b3.setBounds(170, 250, 100, 30);
+        f.add(b3);
+        b3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                double num1 = Double.parseDouble(t1.getText());
+                double num2 = Double.parseDouble(t2.getText());
+                double result = num1*num2;
+                t3.setText(String.valueOf(result));
+            }
+        });
+
+        b4 = new JButton("DIVIDE"); //button for DIVIDE
+        b4.setBounds(50, 250, 100, 30);
+        f.add(b4);
+        b4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                double num1 = Double.parseDouble(t1.getText());
+                double num2 = Double.parseDouble(t2.getText());
+                double result = num1/num2;
+                t3.setText(String.valueOf(result));
+            }
+        });
+
+        b5 = new JButton("CLEAR");
+        b5.setBounds(50, 300, 100, 30);
+        f.add(b5);
+        b5.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+            }
+        });
+
+        
+        
+        f.setVisible(true);
+    }
+    public static void main(String[] args){
+        GUICalc();
+    }
+}
